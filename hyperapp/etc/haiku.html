@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<script src="hyperappmin.js"></script>
+<style type="text/css">
+.haiku { margin-right: auto; clear: left; width: 300; margin-top: 50px;}
+.vertical { writing-mode : vertical-rl; float: right; }
+</style>
+<script>
+
+const { h, app } = hyperapp
+
+const haiku_state = {
+  text1: '1',
+  text2: '2',
+  text3: '3',
+}
+
+const haiku_actions = {
+  text: value =>haiku_state => ({ text1: value[0], text2: value[1], text3: value[2] })
+}
+
+const haiku_view = (state, actions) =>
+  h("div", {}, [
+    h("textarea", { id: "area", rows: 5, placeholder: "ここに俳句を入力", onkeyup: ev => actions.text(ev.target.value.split('\n')) }, ""),
+    h("div", { "class":"haiku"},[
+      h("h1", { id: "label1", "class": "vertical" }, state.text1),
+      h("h1", { id: "label2", "class": "vertical" }, state.text2),
+      h("h1", { id: "label3", "class": "vertical" }, state.text3),
+    //h("br"),
+    ]),
+  ])
+
+  
+</script>
+</head>
+<bodey>
+<main>
+  <div>
+    <textarea>
+
+    </textarea>
+    <div>
+      <h1></h1>
+      <h1></h1>
+      <h1></h1>
+    </div>
+  </div>
+  <div>------------</div>
+  <div id="contents">contents</div>
+
+</main>
+<script>
+main = app(state, actions, view, document.getElementById("contents"))
+//document.body.main)
+  console.log("d.b.main:"+document.body)
+console.log("main:"+main)
+</script>
+</body>
+</html>

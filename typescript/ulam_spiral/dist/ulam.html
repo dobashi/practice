@@ -1,0 +1,33 @@
+<html>
+  <head> </head>
+  <body>
+    <input type="hidden" id="max" value="1000" /><br />
+    <canvas id="canvas" width="2560" height="1440" style="border: solid 1px #000;"> </canvas>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.1/min/jcanvas.min.js"
+    integrity="sha256-rUshvLY805GcMilbPNnko2JxFKj254/GJZwIP6yaiEk="
+    crossorigin="anonymous"
+  ></script>
+  <script src="./ulam.min.js"></script>
+
+  <script>
+let maxNumber = 2000;
+let primes = calcPrime(maxNumber);
+
+// 現在位置 (0,0),下向きスタート
+let current = { position: new Position(0, 0), direction: Down }; 
+groundPut(current.position);
+draw(1, current); 
+
+// 2-maxまで
+for (let i = 2; i < maxNumber; i++) {
+  next = groundNext(current);
+  drawLine(current.position, next.position)
+  groundPut(next.position);
+  draw(i, next);
+  current =  next
+}
+  </script>
+</html>

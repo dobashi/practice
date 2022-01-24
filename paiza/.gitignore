@@ -1,0 +1,51 @@
+scripts/run/*
+
+*.iml
+*.ipr
+*.iws
+build/
+
+*.class
+*~
+*.bak
+*.old
+
+# eclipse conf file
+.settings
+.classpath
+.project
+.manager
+
+# IntelliJ IDEA settings
+.idea*
+*.iml
+*.ipr
+*.iws
+
+# building
+target
+build
+null
+dist
+test-output
+build.log
+
+.gradle/*
+out/
+
+# other scm
+.svn
+.CVS
+.hg*
+
+# switch to regexp syntax.
+#  syntax: regexp
+#  ^\.pc/
+
+#SHITTY output not in target directory
+build.log
+.DS_Store
+derby.log
+*.db
+.lib
+logs

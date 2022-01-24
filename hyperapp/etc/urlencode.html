@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<script src="hyperappmin.js"></script>
+<style type="text/css">
+.target { margin-right: auto; clear: left; width: 300; margin-top: 50px;}
+.result { margin: 10px; }
+</style>
+</head>
+<body>
+<script>
+
+
+const { h, app } = hyperapp
+
+const state = {
+  text: '',
+}
+
+const actions = {
+  text: value => state => ({ text: encodeURIComponent(value) })
+}
+
+const view = (state, actions) =>
+  h("div", {}, [
+    h("label", {} ,"URLエンコードしたい文字列"),
+    h("br"),
+    h("textarea", { id: "area", rows: 5, placeholder: "Input URL", onkeyup: ev => actions.text(ev.target.value) }, ""),
+    h("div", { "class":"target"},[
+      h("h3", { id: "label", "class": "result" }, state.text),
+    //h("br"),
+    ]),
+  ])
+
+window.main = app(state, actions, view, document.body)
+
+</script>
+</body>
+</html>
+  
